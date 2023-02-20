@@ -1,29 +1,39 @@
 body {
-  background-image: url('https://lh3.googleusercontent.com/4kBpglRUcFN_NGOSqNXGQ1I2otL3w2nRxnxmr5Xe3Fkaj1zTg4wTmAsuZSO8kZRjjDVWMN5Knl8qrcmsQHmcKIYJTnnzKmqcRvoNn0mzvfZiDugH8zSgWhfxaj9wkl1KZbkMEAvYcV8zwUNvlxhHsx-kdGRafvEBmv1i-0TGSSG6kpGTat1d7mmIl3s-KSOsgSTUGa1MKz0-78B5LXSaFRDNrh_FSPnlbdXIiz7rQXb5WKV4RqsPYT0Wjyf5bF1oRF9VWvz6kuUrrCur1AEDnbr9wcQJ9MJfp3eP3NCHoEX5toDKWo22cuQ0PpoW8t-HB4VoWP7ZTD0mxsX96LE3nP9VU5jK1xqfv3trL_d-4IqhItrOWsiotVztWuggHelxGDr39R2IN-nQND6yEjGaRNj2EKqLn_bVeDjpKBWvELMYyWBiffGqiCz7hPAJfCA0OR98667mxkgiXZAPFyJ578dXWN8J4LbKqD_U95zyqU3EH0mVV97h0_g1_tzh7E-7HCeZfWEk7xj-bUv7xhP8w0OGII28zM4dbP-oKKm94XjbvjV30ciCZ7KLSMB56_1OQBQ2n_pIpqeGSFGRO0RN-YE1C0S-LtS1OSk3atW11t67ozncaR2bGigWFWaxTev0fusIL0-501WPhQLXEO2-jV-lGISy2Mf_p-y5H2tBRVZJVGLVsJXzFCDufxSgVhVIAXZxwzaUz1LxNW-ZDREBk1SyqthDK6pRvReUZkvljunzzQLjUAOZKB6rrStClfp9Uy8k5_U_bMLKIfhehBb91U_8nHAlu_FnTTExG_oJsIX9MgLocJFULOt9l0bd1mx1kRA5isCtfwTdwuOmDWGcnbyMTEfO3nR3MeatFwhvp1U87SqD0LvPT3iU7p5iLaZEjeEW8KvaYo-Nr8Le25QjnKr6L43ktcI66G9WTLGNfJoW8qnz=s328-no?authuser=0');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  background-attachment: fixed;
-}
-h1 {
-  color: darkblue;
-  margin: auto;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-bottom: 30px;
+  color:  #5c1a1b;
+  background-color: white;
+  font-family: 'Lora', serif;
 }
 
-ul {
-  color: #c4f3ed;
-  list-style-type: none;
+#navigation {
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+  background-color: #F6CFDE;
+  border-radius: 30px;
+  /* background-position: top; */
 }
 
 .nav-bar {
-  margin: 90px;
-  padding: 0;
   display: inline;
+  justify-content: center;
+  justify-content: flex-end;
   background-color: #F6CFDE;
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 18px;
+  opacity: .6;
 }
+
+h1 {
+  color: darkblue;
+  font-family: 'Fredericka the Great', cursive;
+  display: flex;
+  justify-content: center;
+}
+
+/* ul {
+  color: #c4f3ed;
+  list-style-type: none;
+} */
 
 p {
   color: black;
