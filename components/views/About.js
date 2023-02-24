@@ -1,7 +1,7 @@
 import html from "html-literal";
 
 export default () => html`
-  <section class="introduction" id="help">
+  <section class="introduction">
     <p>
       If you or someone you know may be struggling with suicidal thoughts, you
       can call the U.S. National Suicide Prevention Lifeline by dialing 988, or

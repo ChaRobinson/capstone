@@ -4,8 +4,10 @@ import Navigo from "navigo";
 import { capitalize } from "lodash";
 const router = new Navigo("/");
 
+// query selector not seletor
+
 function render(state = store.Home) {
-  document.querySeletor("#root").innerHTML = `
+  document.querySelector("#root").innerHTML = `
   ${Header(state)}
   ${Nav(store.Links)}
   ${Main(state)}
