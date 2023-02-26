@@ -6,7 +6,7 @@ export default () => html`
   </h1>
   <div class="introduction">
     <p class="introduction">
-      space space space
+      still changing? yes
     </p>
   </div>
   <div class="map">

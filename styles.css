@@ -1,6 +1,6 @@
 body {
   color:  #5c1a1b;
-  background-color: white;
+  background-color: violet;
   font-family: 'Lora', serif;
 }
 
@@ -21,6 +21,7 @@ body {
   font-family: 'Fredericka the Great', cursive;
   font-size: 18px;
   opacity: .6;
+  list-style-type: none;
 }
 
 h1 {
@@ -32,7 +33,6 @@ h1 {
 
 /* ul {
   color: #c4f3ed;
-  list-style-type: none;
 } */
 
 p {
