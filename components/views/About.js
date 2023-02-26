@@ -1,13 +1,31 @@
 import html from "html-literal";
 
 export default () => html`
-  <section class="introduction">
+  <div class="about-div">
     <p>
-      If you or someone you know may be struggling with suicidal thoughts, you
-      can call the U.S. National Suicide Prevention Lifeline by dialing 988, or
-      calling 800-273-TALK (8255) any time day or night, or chat online. Crisis
-      Text Line also provides free, 24/7, confidential support via text message
-      to people in crisis when they dial 741741
+      My name is Charity Robinson. I'm a Navy Veteran, a wife and a mother of two.
+      I wanted to create this page to encourage support for those mothers who
+      are suffering from a PMAD (Perinatal Mood Disorder), and to conquer the effects
+      by taking back your power, healing your body and mind by doing something so
+      simple and yet so refreshing: walking.
+</p>
+<br>
+<br>
+    <p>
+      A study from Western University suggests that taking a 15 minute stroll can
+      help women who are struggling with PMAD.  Also referred to as Post-Partum
+      Depression, it can cause:
+      <!-- Insert DOM CODE HERE for unordered list -->
+      <ul class="about">
+        <li>severe mood swing</li>
+        <li> Anger</li>
+        <li> Hopelessness</li>
+        <li> Panic Attacks </li>
+        <li> Loss of interest or pleasure in activities</li>
+      </ul>
+      <img src="/media/cc0-images/grapefruit-slice-332-332.jpg" />
+    </p>
+  </div>
     </p>
   </section>
 `;
