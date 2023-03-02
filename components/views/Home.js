@@ -17,7 +17,6 @@ export default () => html`
     <p></p>
   </div>
   <div class="map">
-    <!-- Insert MAP API HERE -->
     <p class="map">
       Find out how many mothers have signed up by inputting your zip code!
     </p>
