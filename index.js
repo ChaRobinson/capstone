@@ -20,7 +20,8 @@ function render(state = store.Home) {
   // afterRender(); DOM listens after this function is declared later. Will mess up if I use now
   router.updatePageLinks();
 }
-//Add an event listener here.  After render should be last or nearly last at end of document
+
+// Add an event listener here.  After render should be last or nearly last at end of document
 router.hooks({
   before: (done, params) => {
     const view =
@@ -32,12 +33,12 @@ router.hooks({
       case "Home":
         axios
           .get(
-            // Replace the key provided here with your own key from openweathermap
-            `https://www.mapquestapi.com/staticmap/v5/map?locations=New+York,NY||Buffalo,NY||Rochester,NY&size=600,400@2x&key=ezWPgSg0ieAt9F3ZH5rGu5pWkGSQyGs7`
+            `https://www.mapquestapi.com/staticmap/v5/map?locations=New+York,NY||Buffalo,NY||Rochester,NY&size=@2x&key=${process.env.MAP_API_KEY}`
           )
           .then(response => {
-            console.log(response.data);
-            store.Home.map = {};
+            // document.querySelector("#map").innerHTML;
+            // // store.Home.map = {};
+            store.Home.map = response.data;
             done();
           });
         break;
