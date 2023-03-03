@@ -33,12 +33,17 @@ router.hooks({
       case "Home":
         axios
           .get(
-            `https://www.mapquestapi.com/staticmap/v5/map?locations=New+York,NY||Buffalo,NY||Rochester,NY&size=@2x&key=${process.env.MAP_API_KEY}`
+            `https://www.mapquestapi.com/staticmap/v5/map?key=${process.env.MAP_KEY}&center=Boston,MA&size=@2x`
           )
           .then(response => {
-            // document.querySelector("#map").innerHTML;
             // // store.Home.map = {};
+            store.Home.map = {};
             store.Home.map = response.data;
+            document.getElementsByClassName("map").innerHTML = store.Home.map;
+            done();
+          })
+          .catch(error => {
+            console.log("Nothing happened", error);
             done();
           });
         break;
