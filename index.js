@@ -3,9 +3,6 @@ import * as store from "./store";
 import Navigo from "navigo";
 import { capitalize } from "lodash";
 import axios from "axios";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const router = new Navigo("/");
 
@@ -17,8 +14,30 @@ function render(state = store.Home) {
   ${Main(state)}
   ${Footer()}
   `;
-  // afterRender(); DOM listens after this function is declared later. Will mess up if I use now
+  afterRender(state); //DOM listens after this function is declared later. Will mess up if I use now
   router.updatePageLinks();
+}
+
+function afterRender(state) {
+  if (state.view === "Home") {
+    L.mapquest.key = process.env.MAP_KEY;
+
+    // 'map' refers to a <div> element with the ID map
+    const map = L.mapquest.map("map", {
+      center: [37.7749, -122.4194],
+      layers: L.mapquest.tileLayer("map"),
+      zoom: 12
+    });
+
+    var directions = L.mapquest.directions();
+
+    directions.route({
+      start: "Washington, DC",
+      end: "New York, NY"
+    });
+
+    map.addControl(L.mapquest.control());
+  }
 }
 
 // Add an event listener here.  After render should be last or nearly last at end of document
@@ -30,23 +49,6 @@ router.hooks({
         : "Home";
     // Add a switch case statement to handle multiple routes
     switch (view) {
-      case "Home":
-        axios
-          .get(
-            `https://www.mapquestapi.com/staticmap/v5/map?key=${process.env.MAP_KEY}&center=Boston,MA&size=@2x`
-          )
-          .then(response => {
-            // // store.Home.map = {};
-            store.Home.map = {};
-            store.Home.map = response.data;
-            document.getElementsByClassName("map").innerHTML = store.Home.map;
-            done();
-          })
-          .catch(error => {
-            console.log("Nothing happened", error);
-            done();
-          });
-        break;
       default:
         done();
     }

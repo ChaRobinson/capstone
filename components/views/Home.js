@@ -16,7 +16,8 @@ export default () => html`
     </p>
     <p></p>
   </div>
-  <div class="map"></div>
+  <div id="map"></div>
+
   <div>
     <p>
       Find out how many mothers have signed up by inputting your zip code!
