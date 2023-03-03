@@ -32,8 +32,8 @@ function afterRender(state) {
     var directions = L.mapquest.directions();
 
     directions.route({
-      start: "Washington, DC",
-      end: "New York, NY"
+      start: "Portsmouth, VA",
+      end: "San Bernardino, CA"
     });
 
     map.addControl(L.mapquest.control());
