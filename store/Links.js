@@ -1,7 +1,8 @@
 export default [
   { title: "Home", text: "Home" },
-  { title: "About Us", text: "About" },
+  { title: "About", text: "About" },
   { title: "Why Walk", text: "Why Walk" },
-  { title: "Individual Walkers", text: "Individual Walkers" },
-  { title: "Group Walkers", text: "Group Walkers" }
+  { title: "Individual", text: "Individual Walkers" },
+  { title: "Group", text: "Group Walkers" },
+  { title: "Contact", text: "Contact Us" }
 ];
