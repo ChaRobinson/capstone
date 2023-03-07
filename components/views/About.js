@@ -17,7 +17,7 @@ export default () => html`
       Depression, it can cause:
       <!-- Insert DOM CODE HERE for unordered list -->
       <ul class="about">
-        <li>severe mood swing</li>
+        <li> Severe mood swing</li>
         <li> Anger</li>
         <li> Hopelessness</li>
         <li> Panic Attacks </li>
