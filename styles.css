@@ -4,6 +4,16 @@ body {
   font-family: 'Lora', serif;
   /* margin-top: 30px; */
 }
+.resize > img {
+  border: 1px solid;
+  width: 550px;
+  height: 320px;
+  display: flex;
+  margin-top: 25px;
+  margin-left: 25px;
+  justify-content: space-around;
+}
+
 
 /* #navigation {
   display: flex;
@@ -14,8 +24,10 @@ body {
   /* background-position: top; */
 
 #map {
-  border: 2px solid;
-  width: 100%;
+  border: 8px solid;
+  display: flex;
+  justify-content: center;
+  width: 75%;
   height: 600px;
 }
 
@@ -54,7 +66,12 @@ h1 {
 } */
 
 p {
-  color: black;
+  color: #5c1a1b;
   padding: 90px;
   margin: 45px;
 }
+
+p > #start {
+  margin-left: 50px;
+}
+/* bad code fix later */

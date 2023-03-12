@@ -1,5 +1,5 @@
 export default {
-  header: "Group Sign Up",
-  view: "Group"
+  header: "Blogger's Page",
+  view: "Blog"
 };
 //random comment to save, delete later.
