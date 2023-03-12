@@ -35,10 +35,19 @@ function afterRender(state) {
     var directions = L.mapquest.directions();
 
     directions.route({
-      start: "Portsmouth, VA",
+      start: "Redlands, CA",
       end: "San Bernardino, CA"
     });
 
+    L.marker([34.1064, -117.3703], {
+      icon: L.mapquest.icons.marker({
+        primaryColor: "#22407F",
+        secondaryColor: "#3B5998",
+        shadow: true,
+        size: "md",
+        symbol: "C"
+      })
+    }).addTo(map);
     map.addControl(L.mapquest.control());
   }
 }
@@ -52,6 +61,10 @@ router.hooks({
         : "About";
     // Add a switch case statement to handle multiple routes
     switch (view) {
+      // case "home":
+      // axios.get().then(response => { done(); })
+      // }
+
       default:
         done();
     }
