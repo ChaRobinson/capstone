@@ -18,11 +18,27 @@ db.once(
 );
 // look into this more!!!
 const app = express();
+
 const logging = (request, response, next) => {
   console.log(`${request.method} ${request.url} ${Date.now()}`);
   next();
 };
 
+const cors = (req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,content-type, Accept,Authorization,Origin"
+  );
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  next();
+};
+
+app.use(cors);
 app.use(express.json());
 app.use(logging);
 
@@ -32,11 +48,11 @@ app.get("/status", (request, response) => {
   response.json({ message: "Service Healthy" });
   // Create the response body
   // End and return the response
-  response.send(
-    JSON.stringify({
-      message: "How are you doing today? Everything's fine over here!"
-    })
-  );
+  // response.send(
+  //   JSON.stringify({
+  //     message: "How are you doing today? Everything's fine over here!"
+  //   })
+  // );
 });
 app.post("/add", (request, response) => {
   const num1 = request.body.numberOne;
@@ -46,6 +62,9 @@ app.post("/add", (request, response) => {
   };
   response.json(responseBody);
 }); //Need to edit this later!
+
+app.use("/information", information);
 // Tell the Express app to start listening
 // Let the humans know I am running and listening on 4040
-app.listen(PORT, () => console.log("Listening on port 4040"));
+
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
