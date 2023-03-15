@@ -9,7 +9,7 @@ dotenv.config();
 
 const router = new Navigo("/");
 
-// query selector not seletor
+// query selector not seletor.  Renders everything in HOME view becasue that is what im looking at first
 function render(state = store.Home) {
   document.querySelector("#root").innerHTML = `
   ${Header(state)}
@@ -17,11 +17,12 @@ function render(state = store.Home) {
   ${Main(state)}
   ${Footer()}
   `;
-  afterRender(state); //DOM listens after this function is declared later. Will mess up if I use now
+  afterRender(state); //DOM listens after this function is declared later. Will mess up if I use now.  Doublecheck that's where Im at, afterRender
   router.updatePageLinks();
 }
 
 function afterRender(state) {
+  //after specific state is rendered.  If state view = home, processes mapquest key
   if (state.view === "Home") {
     L.mapquest.key = process.env.MAP_KEY;
 
@@ -49,11 +50,22 @@ function afterRender(state) {
       })
     }).addTo(map);
     map.addControl(L.mapquest.control());
+
+    axios
+      .post(`${process.env.MONGODB}/information`, requestData)
+      .then(response => {
+        store.Info.information.push(response.data);
+        router.navigate("/Info");
+      })
+      .catch(error => {
+        console.log("uh oh", error);
+      });
   }
 }
 
 // Add an event listener here.  After render should be last or nearly last at end of document
 router.hooks({
+  // view getting switched over.  What is it going to do?  hook an API maybe for example.  'What is going to happen now'?
   before: (done, params) => {
     const view =
       params && params.data && params.data.view
@@ -64,7 +76,7 @@ router.hooks({
       // case "home":
       // axios.get().then(response => { done(); })
       // }
-
+      //whatever switches into the url router or "hooks" into the router then it does the API call in the axios get request
       default:
         done();
     }
