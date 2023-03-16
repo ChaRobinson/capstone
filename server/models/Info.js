@@ -4,7 +4,7 @@ const infoSchema = new mongoose.Schema({
   preferences: {
     type: String,
     required: true,
-    enum: ["jog", "run"]
+    enum: ["jog", "run", "walk"]
   },
   customer: {
     type: String,

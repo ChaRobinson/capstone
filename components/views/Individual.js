@@ -1,6 +1,6 @@
 import html from "html-literal";
 
-export default () => html`
+export default st => html`
   <div></div>
   <div class="resize">
     <img
@@ -17,5 +17,18 @@ export default () => html`
       a Mother who has been where you are, and you both can get started on your
       journey to healing.
     </p>
+    <table id="ITable">
+      <tr>
+        <th>Name</th>
+        <th>Options</th>
+        <!--Will reference preferences-->
+        <th>Child's Age</th>
+      </tr>
+      ${st.Individual.map(Individual => {
+        return `<tr><td>${Individual.preferences}</td><td>${Individual.customer}</td><td>
+          ${Individual.childAge}</td><td><a data-id=${Individual._id}" class="delete-action" href="#>
+          Delete</a></td></tr>`;
+      })}
+    </table>
   </div>
 `;

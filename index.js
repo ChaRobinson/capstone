@@ -51,6 +51,10 @@ function afterRender(state) {
     }).addTo(map);
     map.addControl(L.mapquest.control());
 
+    const requestData = {
+      preferences:
+    };
+console.log("requestBody", requestData)
     axios
       .post(`${process.env.MONGODB}/information`, requestData)
       .then(response => {
