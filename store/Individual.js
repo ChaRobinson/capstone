@@ -1,4 +1,5 @@
 export default {
   header: "Sign Up Today!",
-  view: "Individual"
+  view: "Individual",
+  information: {}
 };
