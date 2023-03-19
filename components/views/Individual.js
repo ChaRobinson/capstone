@@ -16,9 +16,11 @@ export default store => html`
       ahead and filter by preference, and you will soon be able to meet up with
       a Mother who has been where you are, and you both can get started on your
       journey to healing.
+      <form id="zipCode">
+      <label>ZIP CODE</label><input name="zipCode" type="text" pattern="[0-9]{5}" title="zipCode" /><input type="submit"></input>
+    </form>
     </p>
   </div>
-  `console.log(store, "table"); ``
   <div id="table">
     <table id="information">
       <tr>
@@ -28,16 +30,11 @@ export default store => html`
         <th>customer</th>
         <th>zip</th>
       </tr>
-      ${store.informtion
+      ${store.information
         .map(info => {
-          return `<tr><td>${info.preferences}</td><td>${
-            info.childAge
-          }</td><td>${info.name}</td><td>${info.customer.join(" & ")}</td><td>${
-            info.zip
-          }</td>
-        <td><a data-id="${
-          pizza._id
-        }" class="delete-action" href="#">Delete</a></td>
+          return `<tr><td>${info.preferences}</td><td>${info.childAge}</td><td>${info.customer}</td><td>
+          ${info.zip}</td>
+        <td><a data-id="${info._id}" class="delete-action" href="#">Delete</a></td>
         </tr>`;
         })
         .join("")}

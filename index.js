@@ -57,12 +57,17 @@ function afterRender(state) {
 
         const inputList = event.target.element;
         console.log("Input Element List", inputList);
-
-        const preferences = ["walk", "jog", "run"];
-        for (let input of inputList.preferences) {
-          if (input.checked) {
-            preferences.push(input.value);
-          }
+        store.Individual.zip = inputList.zipCode.value;
+        console.log(store.Individual.zip, "ind zip");
+        if (store.Individual.zip) {
+          console.log("Individual", process.env.BACKEND_SERVER);
+          axios
+            .get(`${process.env.BACKEND_SERVER}/zip/${store.Individual.zip}`)
+            .then(response => {
+              console.log(response.data);
+              store.Individual.information = response.data;
+              console.log((store.Individual.information = response.data));
+            });
         }
       });
     }
@@ -93,21 +98,21 @@ router.hooks({
     console.log("before", view);
     // Add a switch case statement to handle multiple routes
     switch (view) {
-      case "Home":
-        if (store.Home.zip) {
-          console.log("Home", process.env.BACKEND_SERVER);
-          axios
-            .get(`${process.env.BACKEND_SERVER}/zip/${store.Home.zip}`)
-            .then(response => {
-              console.log(response.data);
-              store.Home.information = response.data;
-              console.log((store.Home.information = response.data));
-              done();
-            });
-        } else {
-          done();
-        }
-        break;
+      // case "Individual":
+      //   if (store.Individual.zip) {
+      //     console.log("Individual", process.env.BACKEND_SERVER);
+      //     axios
+      //       .get(`${process.env.BACKEND_SERVER}/zip/${store.Individual.zip}`)
+      //       .then(response => {
+      //         console.log(response.data);
+      //         store.Individual.information = response.data;
+      //         console.log((store.Individual.information = response.data));
+      //         done();
+      //       });
+      //   } else {
+      //     done();
+      //   }
+      // break;
       //whatever switches into the url router or "hooks" into the router then it does the API call in the axios get request
       default:
         done();
@@ -119,25 +124,6 @@ router.hooks({
         ? capitalize(params.data.view)
         : "About";
     console.log("already");
-    switch (view) {
-      case "Home":
-        if (store.Home.zip) {
-          axios
-            .get(`${process.env.BACKEND_SERVER}/zip/${store.Home.zip}`)
-            .then(response => {
-              console.log(response.data);
-              store.Home.information = response.data;
-              render(store[view]);
-            });
-        } else {
-          render(store[view]);
-          console.log(store[view], "store view");
-        }
-        break;
-      //whatever switches into the url router or "hooks" into the router then it does the API call in the axios get request
-      default:
-        render(store[view]);
-    }
     render(store[view]);
   }
 });

@@ -1,5 +1,6 @@
 export default {
   header: "Sign Up Today!",
   view: "Individual",
-  information: {}
+  information: [],
+  zip: "30001"
 };
