@@ -3,25 +3,25 @@ import * as store from "./store";
 import Navigo from "navigo";
 import { capitalize } from "lodash";
 import axios from "axios";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const router = new Navigo("/");
 
 // query selector not seletor.  Renders everything in HOME view becasue that is what im looking at first
 function render(state = store.Home) {
+  console.log("render");
   document.querySelector("#root").innerHTML = `
   ${Header(state)}
   ${Nav(store.Links)}
   ${Main(state)}
   ${Footer()}
   `;
-  afterRender(state); //DOM listens after this function is declared later. Will mess up if I use now.  Doublecheck that's where Im at, afterRender
+  afterRender(state);
+  //DOM listens after this function is declared later. Will mess up if I use now.  Doublecheck that's where Im at, afterRender
   router.updatePageLinks();
 }
 
 function afterRender(state) {
+  console.log("afterRender");
   //after specific state is rendered.  If state view = home, processes mapquest key
   if (state.view === "Home") {
     L.mapquest.key = process.env.MAP_KEY;
@@ -51,19 +51,34 @@ function afterRender(state) {
     }).addTo(map);
     map.addControl(L.mapquest.control());
 
-    const requestData = {
-      preferences:
-    };
-console.log("requestBody", requestData)
-    axios
-      .post(`${process.env.MONGODB}/information`, requestData)
-      .then(response => {
-        store.Info.information.push(response.data);
-        router.navigate("/Info");
-      })
-      .catch(error => {
-        console.log("uh oh", error);
+    if (state.view === "Individual") {
+      document.querySelector("form").addEventListener("submit", event => {
+        event.preventDefault();
+
+        const inputList = event.target.element;
+        console.log("Input Element List", inputList);
+
+        const preferences = ["walk", "jog", "run"];
+        for (let input of inputList.preferences) {
+          if (input.checked) {
+            preferences.push(input.value);
+          }
+        }
       });
+    }
+    // const requestData = {
+    //   preferences:
+    // };
+    // console.log("requestBody", requestData)
+    // axios
+    //   .post(`${process.env.MONGODB}/information`, requestData)
+    //   .then(response => {
+    //     store.Info.information.push(response.data);
+    //     router.navigate("/Info");
+    //   })
+    //   .catch(error => {
+    //     console.log("uh oh", error);
+    //   });
   }
 }
 
@@ -74,12 +89,25 @@ router.hooks({
     const view =
       params && params.data && params.data.view
         ? capitalize(params.data.view)
-        : "About";
+        : "Home";
+    console.log("before", view);
     // Add a switch case statement to handle multiple routes
     switch (view) {
-      // case "home":
-      // axios.get().then(response => { done(); })
-      // }
+      case "Home":
+        if (store.Home.zip) {
+          console.log("Home", process.env.BACKEND_SERVER);
+          axios
+            .get(`${process.env.BACKEND_SERVER}/zip/${store.Home.zip}`)
+            .then(response => {
+              console.log(response.data);
+              store.Home.information = response.data;
+              console.log((store.Home.information = response.data));
+              done();
+            });
+        } else {
+          done();
+        }
+        break;
       //whatever switches into the url router or "hooks" into the router then it does the API call in the axios get request
       default:
         done();
@@ -90,6 +118,26 @@ router.hooks({
       params && params.data && params.data.view
         ? capitalize(params.data.view)
         : "About";
+    console.log("already");
+    switch (view) {
+      case "Home":
+        if (store.Home.zip) {
+          axios
+            .get(`${process.env.BACKEND_SERVER}/zip/${store.Home.zip}`)
+            .then(response => {
+              console.log(response.data);
+              store.Home.information = response.data;
+              render(store[view]);
+            });
+        } else {
+          render(store[view]);
+          console.log(store[view], "store view");
+        }
+        break;
+      //whatever switches into the url router or "hooks" into the router then it does the API call in the axios get request
+      default:
+        render(store[view]);
+    }
     render(store[view]);
   }
 });
@@ -100,6 +148,7 @@ router
     ":view": params => {
       let view = capitalize(params.data.view);
       render(store[view]);
+      console.log(store[view], "router on");
     }
   })
   .resolve();

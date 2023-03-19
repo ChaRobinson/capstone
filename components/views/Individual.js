@@ -1,6 +1,6 @@
 import html from "html-literal";
 
-export default st => html`
+export default store => html`
   <div></div>
   <div class="resize">
     <img
@@ -17,18 +17,30 @@ export default st => html`
       a Mother who has been where you are, and you both can get started on your
       journey to healing.
     </p>
-    <table id="ITable">
+  </div>
+  `console.log(store, "table"); ``
+  <div id="table">
+    <table id="information">
       <tr>
-        <th>Name</th>
-        <th>Options</th>
-        <!--Will reference preferences-->
-        <th>Child's Age</th>
+        <th>preferences</th>
+        <th>childaAge</th>
+        <th>name</th>
+        <th>customer</th>
+        <th>zip</th>
       </tr>
-      ${st.Individual.map(Individual => {
-        return `<tr><td>${Individual.preferences}</td><td>${Individual.customer}</td><td>
-          ${Individual.childAge}</td><td><a data-id=${Individual._id}" class="delete-action" href="#>
-          Delete</a></td></tr>`;
-      })}
+      ${store.informtion
+        .map(info => {
+          return `<tr><td>${info.preferences}</td><td>${
+            info.childAge
+          }</td><td>${info.name}</td><td>${info.customer.join(" & ")}</td><td>${
+            info.zip
+          }</td>
+        <td><a data-id="${
+          pizza._id
+        }" class="delete-action" href="#">Delete</a></td>
+        </tr>`;
+        })
+        .join("")}
     </table>
   </div>
 `;

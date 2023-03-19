@@ -1,5 +1,5 @@
 import html from "html-literal";
-export default () => html`
+export default state => html`
   <!-- <header></header> -->
   <h1>
     Walk With Us
@@ -22,7 +22,10 @@ export default () => html`
     <p>
       Find out how many mothers have signed up by inputting your zip code!
     </p>
-
+<div>
+${state.information}
+<!-- put above state an input box and submit button -->
+</div>
     <section class="introduction">
       <p>
         If you or someone you know may be struggling with suicidal thoughts, you
