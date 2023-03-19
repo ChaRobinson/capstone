@@ -15,6 +15,11 @@ const infoSchema = new mongoose.Schema({
     type: Number,
     required: true,
     validate: /^[0-9]*$/
+  },
+  zip: {
+    type: Number,
+    required: true,
+    validate: /^[0-9]{5}$/
   }
 });
 
