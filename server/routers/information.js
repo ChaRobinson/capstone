@@ -7,6 +7,7 @@ router.post("/", (request, response) => {
   const newInfo = new Info(request.body);
   newInfo.save((error, record) => {
     if (error) {
+      console.log(".post didn't work");
       return response.status(500).json(error);
     }
     return response.json(record);
@@ -26,13 +27,14 @@ router.get("/zip/:zip", (request, response) => {
     return response.json(record);
   });
 });
-//When I want to call on database, url from server (NOT MONGO), serverURL/information/zip/23321
 
-router.get("/:id", (request, response) => {
-  Info.findbyId(request.params.id, (error, record) => {
-    if (error) return response.status(500).json(error);
-    return response.json(record);
-  });
-});
+// router.get("/:id", (request, response) => {
+//   Info.findbyId(request.params.id, (error, record) => {
+//     if (error) return response.status(500).json(error);
+//     return response.json(record);
+//   });
+// });
 
 module.exports = router;
+
+//When I want to call on database, url from server (NOT MONGO), serverURL/information/zip/23321

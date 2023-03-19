@@ -22,10 +22,9 @@ export default state => html`
     <p>
       Find out how many mothers have signed up by inputting your zip code!
     </p>
-<div>
-${state.information}
-<!-- put above state an input box and submit button -->
-</div>
+    <div>
+      <!-- put above state an input box and submit button -->
+    </div>
     <section class="introduction">
       <p>
         If you or someone you know may be struggling with suicidal thoughts, you
