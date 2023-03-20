@@ -26,7 +26,7 @@ function afterRender(state) {
   if (state.view === "Home") {
     L.mapquest.key = process.env.MAP_KEY;
 
-    // 'map' refers to a <div> element with the ID map
+    // 'map' refers to a <div> elements with the ID map
     const map = L.mapquest.map("map", {
       center: [37.7749, -122.4194],
       layers: L.mapquest.tileLayer("map"),
@@ -50,13 +50,34 @@ function afterRender(state) {
       })
     }).addTo(map);
     map.addControl(L.mapquest.control());
-    //March 20 changes//
     if (state.view === "Individual") {
       document.querySelector("form").addEventListener("submit", event => {
         event.preventDefault();
 
-        const inputList = event.target.element;
-        console.log("Input Element List", inputList);
+        const inputList = event.target.elements;
+        console.log("Input elements List", inputList);
+        store.Individual.zip = inputList.zipCode.value;
+        console.log(store.Individual.zip, "ind zip");
+
+        if (store.Individual.zip) {
+          console.log("Individual", process.env.BACKEND_SERVER);
+          axios
+            .get(`${process.env.BACKEND_SERVER}/zip/${store.Individual.zip}`)
+            .then(response => {
+              console.log(response.data);
+              store.Individual.information = response.data;
+              console.log((store.Individual.information = response.data));
+              router.navigate("/Individual");
+            });
+        }
+      });
+    }
+    if (state.view === "Individual") {
+      document.querySelector("form").addEventListener("submit", event => {
+        event.preventDefault();
+
+        const inputList = event.target.elementss;
+        console.log("Input Elements List", inputList);
         store.Individual.zip = inputList.zipCode.value;
         console.log(store.Individual.zip, "ind zip");
         if (store.Individual.zip) {
@@ -85,8 +106,8 @@ function afterRender(state) {
     //     console.log("uh oh", error);
     //   });
   }
+  // const requestData = {}
 }
-
 // Add an event listener here.  After render should be last or nearly last at end of document
 router.hooks({
   // view getting switched over.  What is it going to do?  hook an API maybe for example.  'What is going to happen now'?
