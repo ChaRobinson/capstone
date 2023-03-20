@@ -50,7 +50,7 @@ function afterRender(state) {
       })
     }).addTo(map);
     map.addControl(L.mapquest.control());
-
+    //March 20 changes//
     if (state.view === "Individual") {
       document.querySelector("form").addEventListener("submit", event => {
         event.preventDefault();
