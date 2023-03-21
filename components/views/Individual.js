@@ -16,16 +16,22 @@ export default store => html`
       ahead and filter by preference, and you will soon be able to meet up with
       a Mother who has been where you are, and you both can get started on your
       journey to healing.
-      <form id="zipCode">
-      <label>ZIP CODE</label><input name="zipCode" type="text" pattern="[0-9]{5}" title="zipCode" /><input type="submit"></input>
-    </form>
     </p>
+    <form>
+      <label>ZIP CODE</label
+      ><input
+        name="zipCode"
+        type="text"
+        pattern="[0-9]{5}"
+        title="zipCode"
+      /><button type="submit">submit</button>
+    </form>
   </div>
   <div id="table">
     <table id="information">
       <tr>
         <th>preferences</th>
-        <th>childaAge</th>
+        <th>child Age</th>
         <th>name</th>
         <th>customer</th>
         <th>zip</th>

@@ -50,48 +50,7 @@ function afterRender(state) {
       })
     }).addTo(map);
     map.addControl(L.mapquest.control());
-    if (state.view === "Individual") {
-      document.querySelector("form").addEventListener("submit", event => {
-        event.preventDefault();
 
-        const inputList = event.target.elements;
-        console.log("Input elements List", inputList);
-        store.Individual.zip = inputList.zipCode.value;
-        console.log(store.Individual.zip, "ind zip");
-
-        if (store.Individual.zip) {
-          console.log("Individual", process.env.BACKEND_SERVER);
-          axios
-            .get(`${process.env.BACKEND_SERVER}/zip/${store.Individual.zip}`)
-            .then(response => {
-              console.log(response.data);
-              store.Individual.information = response.data;
-              console.log((store.Individual.information = response.data));
-              router.navigate("/Individual");
-            });
-        }
-      });
-    }
-    if (state.view === "Individual") {
-      document.querySelector("form").addEventListener("submit", event => {
-        event.preventDefault();
-
-        const inputList = event.target.elementss;
-        console.log("Input Elements List", inputList);
-        store.Individual.zip = inputList.zipCode.value;
-        console.log(store.Individual.zip, "ind zip");
-        if (store.Individual.zip) {
-          console.log("Individual", process.env.BACKEND_SERVER);
-          axios
-            .get(`${process.env.BACKEND_SERVER}/zip/${store.Individual.zip}`)
-            .then(response => {
-              console.log(response.data);
-              store.Individual.information = response.data;
-              console.log((store.Individual.information = response.data));
-            });
-        }
-      });
-    }
     // const requestData = {
     //   preferences:
     // };
@@ -107,6 +66,27 @@ function afterRender(state) {
     //   });
   }
   // const requestData = {}
+  if (state.view === "Individual") {
+    document.querySelector("form").addEventListener("submit", event => {
+      event.preventDefault();
+      const inputList = event.target.elements;
+      console.log("Input elements List", inputList);
+      store.Individual.zip = inputList.zipCode.value;
+      console.log(store.Individual.zip, "ind zip");
+
+      if (store.Individual.zip) {
+        console.log("Individual", process.env.BACKEND_SERVER);
+        axios
+          .get(`${process.env.BACKEND_SERVER}/zip/${store.Individual.zip}`)
+          .then(response => {
+            console.log(response.data);
+            store.Individual.information = response.data;
+            console.log((store.Individual.information = response.data));
+            router.navigate("/Individual");
+          });
+      }
+    });
+  }
 }
 // Add an event listener here.  After render should be last or nearly last at end of document
 router.hooks({
