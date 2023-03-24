@@ -30,26 +30,43 @@ function afterRender(state) {
     const map = L.mapquest.map("map", {
       center: [37.7749, -122.4194],
       layers: L.mapquest.tileLayer("map"),
-      zoom: 12
+      zoom: 12,
+      zoomControl: false
     });
 
-    var directions = L.mapquest.directions();
-
-    directions.route({
-      start: "Redlands, CA",
-      end: "San Bernardino, CA"
-    });
-
-    L.marker([34.1064, -117.3703], {
-      icon: L.mapquest.icons.marker({
-        primaryColor: "#22407F",
-        secondaryColor: "#3B5998",
-        shadow: true,
-        size: "md",
-        symbol: "C"
+    L.control
+      .zoom({
+        position: "topright"
       })
-    }).addTo(map);
-    map.addControl(L.mapquest.control());
+      .addTo(map);
+
+      L.mapquest.directionsControl({
+        routeSummary: {
+          enabled: false
+        },
+        narrativeControl: {
+          enabled: true,
+          compactResults: false
+        }
+      })
+      .addTo(map);
+    // var directions = L.mapquest.directions();
+
+    // directions.route({
+    //   start: "Redlands, CA",
+    //   end: "San Bernardino, CA"
+    // });
+
+    // L.marker([34.1064, -117.3703], {
+    //   icon: L.mapquest.icons.marker({
+    //     primaryColor: "#22407F",
+    //     secondaryColor: "#3B5998",
+    //     shadow: true,
+    //     size: "md",
+    //     symbol: "C"
+    //   })
+    // }).addTo(map);
+    // map.addControl(L.mapquest.control());
 
     // const requestData = {
     //   preferences:
