@@ -1,25 +1,25 @@
 import html from "html-literal";
 
 export default () => html`
-  <p>
-    Here you will find some invaluable information and resources if you are
-    suffering from Postpartum Depression, Anxiety, or any other Perinatal Mood
-    Disorder. Perhaps you aren't suffering, but you know of someone who is. Then
-    please, get your loved one some information that may be helpful to them!
-    Healing first starts with recognizing that there may be a problem. But there
-    is a solution! Reach out, get help, and take care of yourself!
-  </p>
-  <div class="place">
-    <p>
-      Which state are you in? Choose from the state you reside in to see what
-      resources are available to you!
-    </p>
-    <div class="article">
-      <article>
-        <h1>Ways to start healing from Perinatal Depression</h1>
-        <h2>There are several ways to begin the journey of healing.</h2>
-        <h3>Several Ways include:</h3>
-        <p>
+  <div class="container" id="container-home">
+    <div id="span-home">
+      <p>
+        Here you will find some invaluable information and resources if you are
+        suffering from Postpartum Depression, Anxiety, or any other Perinatal
+        Mood Disorder. Perhaps you aren't suffering, but you know of someone who
+        is. Then please, get your loved one some information that may be helpful
+        to them! Healing first starts with recognizing that there may be a
+        problem. But there is a solution! Reach out, get help, and take care of
+        yourself!
+      </p>
+
+      <p>
+        Which state are you in? Choose from the state you reside in to see what
+        resources are available to you!
+      </p>
+      <p>
+        Ways to start healing from Perinatal Depression There are several ways
+        to begin the journey of healing. Several Ways include:
         <ul>
           <li>Psychotherapy</li>
           <li>Antidepressants</li>
@@ -27,18 +27,17 @@ export default () => html`
         </ul>
         </p>
         <p>
-          <h3>
             Symptoms include:
-          </h3>
           <ul>
             <li>Mood Swings
             </li>
-            <li>Anxiety</li>
-            <li>Crying Spells</li>
-          </ul>
-        </p>
-<p>It's never too late to get help.  If you are suffering, you aren't alone! Use our website to find a friend to walk with today!</p>
-      </article>
+            <li class="container">Anxiety</li>
+            <li class="container">Crying Spells</li>
+      </p>
+      <p>
+        It's never too late to get help. If you are suffering, you aren't alone!
+        Use our website to find a friend to walk with today!
+      </p>
     </div>
   </div>
 `;

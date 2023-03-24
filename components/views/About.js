@@ -1,7 +1,8 @@
 import html from "html-literal";
 
 export default () => html`
-  <div class="about-div">
+<div class="container" id="container-home">
+  <div id="span-home">
     <p>
       My name is Charity Robinson. I'm a Navy Veteran, a wife and a mother of two.
       I wanted to create this page to encourage support for those mothers who
@@ -25,7 +26,6 @@ export default () => html`
       </ul>
       <img src="/media/cc0-images/grapefruit-slice-332-332.jpg" />
     </p>
+</div>
   </div>
-    </p>
-  </section>
 `;

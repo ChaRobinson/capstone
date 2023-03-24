@@ -1,11 +1,12 @@
 import html from "html-literal";
 
 export default links => html`
-  <nav>
-    <ul class="nav-bar">
+  <nav class="nav-container">
+    <ul class="nav-container-links">
+      <li class="nav-container-links" id="nav-title">Walk with Us</li>
       ${links.map(
         el =>
-          `<li><a href="/${el.title}" title="${el.title}" data-navigo>${el.text}</a></li>`
+          `<li class="nav-container-links"><a href="/${el.title}" title="${el.title}" data-navigo>${el.text}</a></li>`
       )}
     </ul>
   </nav>
