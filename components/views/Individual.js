@@ -10,7 +10,7 @@ export default store => html`
     />
   </div> -->
   <div class="container" id="container-home">
-    <div id="span-home">
+    <div id="span-ind">
       <p id="start">
         Getting started is super easy! Simply type in your zip code and hit
         "GO". Afterwards, a listing of current users in your area will be
@@ -18,7 +18,7 @@ export default store => html`
         to meet up with a Mother who has been where you are, and you both can
         get started on your journey to healing.
       </p>
-      <form>
+      <form id="formula">
         <label>ZIP CODE</label
         ><input
           name="zipCode"
@@ -27,11 +27,11 @@ export default store => html`
           title="zipCode"
         /><button type="submit">submit</button>
       </form>
-      <div id="table">
-        <table id="information" border="2px">
+      <div id="tab">
+        <table id="table" border="2px">
           <tr>
             <th>preferences</th>
-            <th>child Age</th>
+            <th>child Age (months)</th>
             <th>customer</th>
             <th>zip</th>
           </tr>
@@ -45,6 +45,7 @@ export default store => html`
             .join("")}
         </table>
       </div>
+      <div class="insert-div" id="map"></div>
     </div>
   </div>
 `;

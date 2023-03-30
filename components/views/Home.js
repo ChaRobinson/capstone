@@ -4,7 +4,8 @@ export default state => html`
   <section>
   <div class="container" id="container-home">
   <div class="insert-div" id="span-home">
-      <p>Are you a mother or a mother to be who may be suffering from a Perinatal
+  <img src="https://i.ibb.co/8jgrQZh/logo.jpg" alt="logo" border="0" id="image-home">
+  <p>Are you a mother or a mother to be who may be suffering from a Perinatal
       Mood Disorder?</p>
       <br />
       <br />
@@ -25,7 +26,6 @@ export default state => html`
       </p>
 
   </div>
-  <div class="insert-div" id="map"></div>
 </div>
 </section>
 

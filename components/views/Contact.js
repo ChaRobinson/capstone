@@ -1,9 +1,8 @@
 import html from "html-literal";
 
 export default () => html`
-  <div class="container">
-    <div class="contact-grid">
-      <span>
+  <div class="container" id="container-home">
+  <div class="insert-div" id="span-home">
         <p>
           Want to contact me? E-mail me at cmrobinson8686@gmail.com I look
           forward to hearing from you!
