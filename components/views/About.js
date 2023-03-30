@@ -11,6 +11,8 @@ export default () => html`
       simple and yet so refreshing: walking.
 </p>
 <br>
+<img src="https://i.ibb.co/Xjnt5F0/pexels-roya-11376694.jpg" alt="butterflies" border="0" class="kids">
+
 <br>
     <p>
       A study from Western University suggests that taking a 15 minute stroll can
@@ -24,7 +26,6 @@ export default () => html`
         <li> Panic Attacks </li>
         <li> Loss of interest or pleasure in activities</li>
       </ul>
-      <img src="/media/cc0-images/grapefruit-slice-332-332.jpg" />
     </p>
 </div>
   </div>

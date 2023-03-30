@@ -6,7 +6,7 @@ import axios from "axios";
 
 const router = new Navigo("/");
 
-// query selector not seletor.  Renders everything in HOME view becasue that is what im looking at first
+// query selector not selector.  Renders everything in HOME view because that is what im looking at first
 function render(state = store.Home) {
   console.log("render");
   document.querySelector("#root").innerHTML = `
@@ -23,7 +23,8 @@ function render(state = store.Home) {
 function afterRender(state) {
   console.log("afterRender");
   //after specific state is rendered.  If state view = home, processes mapquest key
-  if (state.view === "Home") {
+
+  if (state.view === "Individual") {
     L.mapquest.key = process.env.MAP_KEY;
 
     // 'map' refers to a <div> elements with the ID map
@@ -40,7 +41,8 @@ function afterRender(state) {
       })
       .addTo(map);
 
-      L.mapquest.directionsControl({
+    L.mapquest
+      .directionsControl({
         routeSummary: {
           enabled: false
         },
@@ -50,39 +52,30 @@ function afterRender(state) {
         }
       })
       .addTo(map);
-    // var directions = L.mapquest.directions();
-
-    // directions.route({
-    //   start: "Redlands, CA",
-    //   end: "San Bernardino, CA"
-    // });
-
-    // L.marker([34.1064, -117.3703], {
-    //   icon: L.mapquest.icons.marker({
-    //     primaryColor: "#22407F",
-    //     secondaryColor: "#3B5998",
-    //     shadow: true,
-    //     size: "md",
-    //     symbol: "C"
-    //   })
-    // }).addTo(map);
-    // map.addControl(L.mapquest.control());
-
-    // const requestData = {
-    //   preferences:
-    // };
-    // console.log("requestBody", requestData)
-    // axios
-    //   .post(`${process.env.MONGODB}/information`, requestData)
-    //   .then(response => {
-    //     store.Info.information.push(response.data);
-    //     router.navigate("/Info");
-    //   })
-    //   .catch(error => {
-    //     console.log("uh oh", error);
-    //   });
   }
-  // const requestData = {}
+
+  if (state.view === "Blog") {
+    console.log("Blog is working", state.view);
+
+    const url = `https://gnews.io/api/v4/top-headlines?category=general&lang=en&country=us&max=10&apikey=${process.env.GOODNEWS_KEY}`;
+    axios
+      .get(url)
+      .then(response => {
+        const data = response.data;
+        const articles = data.articles;
+
+        // let articleList = "";
+        for (let i = 0; i < articles.length; i++) {
+          console.log("Title: " + articles[i]["title"]);
+          console.log("Description: " + articles[i]["description"]);
+        }
+        // const blogArt = document.querySelector("#table-blog");
+        // blogArt.innerHTML = articleList;
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
   if (state.view === "Individual") {
     document.querySelector("form").addEventListener("submit", event => {
       event.preventDefault();
@@ -116,21 +109,23 @@ router.hooks({
     console.log("before", view);
     // Add a switch case statement to handle multiple routes
     switch (view) {
-      // case "Individual":
-      //   if (store.Individual.zip) {
-      //     console.log("Individual", process.env.BACKEND_SERVER);
-      //     axios
-      //       .get(`${process.env.BACKEND_SERVER}/zip/${store.Individual.zip}`)
-      //       .then(response => {
-      //         console.log(response.data);
-      //         store.Individual.information = response.data;
-      //         console.log((store.Individual.information = response.data));
-      //         done();
-      //       });
-      //   } else {
-      //     done();
-      //   }
-      // break;
+      case "Blog":
+        axios
+          .get(
+            `https://gnews.io/api/v4/top-headlines?category=health&lang=en&country=us&max=10&apikey=${process.env.GOODNEWS_KEY}`
+          )
+          .then(response => {
+            // Storing retrieved data in state
+            console.log(response.data);
+            store.Blog.blog[0] = response.data.articles[0].title;
+            console.log(store.Blog.blog, "store blog");
+            done();
+          })
+          .catch(error => {
+            console.log("It puked", error);
+            done();
+          });
+        break;
       //whatever switches into the url router or "hooks" into the router then it does the API call in the axios get request
       default:
         done();
