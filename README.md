@@ -1,5 +1,10 @@
-# Savvy Coders Project Boilerplate Starter Kit
+# Walk with Moms Capstone Project
+This is my capstone project!  Development3 branch has the latest updates to it.  I've worked very, very hard on this project and I am truly thrilled to be releasing it for public viewing!  Please, let me know what you think of my project.  Any improvements? Suggestions?  Constructive feedback?  Don't hesitate to let me know!  I will continuously push updates to this capstone until I get it to where I want it to be!
 
+All the best,
+Charity R.
+
+# Savvy Coders Project Boilerplate Starter Kit
 ## Overview
 
 This template repository contains several opinionated, 'starter' files and settings to help Savvy Coder students focus more time and energy on learning how to code and/or craft 'business logic' for projects and less time on configurations.
