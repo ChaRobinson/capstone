@@ -56,7 +56,6 @@ function afterRender(state) {
 
   if (state.view === "Blog") {
     console.log("Blog is working", state.view);
-
     const url = `https://gnews.io/api/v4/top-headlines?category=general&lang=en&country=us&max=10&apikey=${process.env.GOODNEWS_KEY}`;
     axios
       .get(url)
