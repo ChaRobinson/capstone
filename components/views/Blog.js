@@ -17,13 +17,19 @@ export default st => html`
         Which state are you in? Choose from the state you reside in to see what
         resources are available to you!
       </p>
-      <label for="states">Select your State</label>
-<select id="areas" name="places">
+<button type="button">go</button>
+<label for="places">Select your State</label>
   <option value="Alabama">Alabama</option>
   <option value="Alaska">Alaska</option>
   <option value="Arizona">Arizona</option>
-  <option value="Virginia" a link="https://postpartumva.org/">Virginia</option>
+  <option value="Virginia">Virginia</option>
+  <option value="Arkansas">Arkansas</option>
+  <option value="California">California</option>
+  <option value="Colorado">Colorado</option>
+  <option value="Connecticut">Connecticut</option>
+  <option value="Delaware">Delaware</option>
 </select>
+<button type="go">go</button>
       <p>
         Ways to start healing from Perinatal Depression There are several ways
         to begin the journey of healing. Several Ways include:
