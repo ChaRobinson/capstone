@@ -28,6 +28,7 @@ export default st => html`
   <option value="Colorado">Colorado</option>
   <option value="Connecticut">Connecticut</option>
   <option value="Delaware">Delaware</option>
+  <option value="Florida">Delaware</option>
 </select>
 <button type="go">go</button>
       <p>
